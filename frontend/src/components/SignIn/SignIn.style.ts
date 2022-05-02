@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const AuthContainer = styled.div`
   position: relative;
@@ -42,6 +43,7 @@ export const FormTitle = styled.h2`
 export const InputWrapper = styled.div`
   margin-bottom: 10px;
   width: 100%;
+
   &:last-of-type {
     margin: 0;
   }
@@ -57,7 +59,7 @@ export const Label = styled.label`
   border-radius: 50px;
   height: 40px;
   padding: 0 20px;
-  color: ${p => p.theme.rowGrey};
+  color: ${(p) => p.theme.rowGrey};
 `;
 
 export const Input = styled.input`
@@ -67,12 +69,14 @@ export const Input = styled.input`
   background: none;
   margin-left: 10px;
   padding: 10px;
-  color: ${p => p.theme.primaryBlack};
-`
+  color: ${(p) => p.theme.primaryBlack};
 
-export const SpanIcon = styled.span`
+  &::placeholder {
+    color: ${(p) => p.theme.primaryGrey};
+  }
+`;
 
-`
+export const SpanIcon = styled.span``;
 
 export const ErrorText = styled.div`
   font-size: 12px;
@@ -81,17 +85,19 @@ export const ErrorText = styled.div`
   transition: 0.3s;
   transform: translateY(-20px);
   opacity: 0;
-  color: #FF5555;
+  color: #ff5555;
+
   &:before {
-    content: "* ";
+    content: '* ';
   }
+
   /* if error
    transform: translateY(0);
     opacity: 1;
     transition: 0.3s;
    
    */
-`
+`;
 
 export const ConfirmButton = styled.button`
   margin-top: 30px;
@@ -104,10 +110,29 @@ export const ConfirmButton = styled.button`
   letter-spacing: 1px;
   text-transform: capitalize;
   border-radius: 50px;
-  background-color: ${p => p.theme.primaryBlue};
+  background-color: ${(p) => p.theme.primaryBlue};
   cursor: pointer;
   transition: all 0.3s ease;
+
   &:hover {
-    background-color: ${p => p.theme.secondaryBlue};
+    background-color: ${(p) => p.theme.secondaryBlue};
   }
-`
+`;
+
+export const Paragraph = styled.p`
+  margin: 0 8px 0 0;
+  font-size: 14px;
+  color: ${(p) => p.theme.primaryGrey};
+`;
+
+export const SignUpLink = styled(NavLink)`
+  text-decoration: none;
+  margin: 0;
+  font-size: 14px;
+  color: ${({ theme }) => theme.primaryBlue};
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: ${({ theme }) => theme.secondaryBlue};
+  }
+`;

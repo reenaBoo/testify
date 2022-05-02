@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Container } from '../Containers/Containers.styles';
-import ICardList from "../../interfaces/ICardList";
 
 export const ListTitle = styled.h2`
   font-size: 16px;
@@ -13,7 +12,7 @@ export const ListContainer = styled(Container)`
   padding: 20px 0;
 `
 
-export const ListRow = styled(Container)<ICardList>`
+export const ListRow = styled(Container)<{color: any}>`
   padding-bottom: 20px;
   border-bottom: 2px solid ${props => props.color};
 `

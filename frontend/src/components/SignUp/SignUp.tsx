@@ -18,26 +18,33 @@ function SignUp() {
         <FormTitle>Sign up</FormTitle>
         <InputWrapper>
           <Label>
-            <Input name="email" type="email" placeholder="example@gmail.com" required />
+            <Input name="name" type="text" placeholder="Enter your name" required />
             <SpanIcon></SpanIcon>
           </Label>
           <ErrorText>there would be error</ErrorText>
         </InputWrapper>
         <InputWrapper>
           <Label>
-            <Input name="password" type="password" placeholder="password" required />
+            <Input name="email" type="email" placeholder="Enter your email" required />
             <SpanIcon></SpanIcon>
           </Label>
           <ErrorText>there would be error</ErrorText>
         </InputWrapper>
         <InputWrapper>
           <Label>
-            <Input name="confirmPassword" type="password" placeholder="password" required />
+            <Input name="password" type="password" placeholder="Create password" required />
             <SpanIcon></SpanIcon>
           </Label>
           <ErrorText>there would be error</ErrorText>
         </InputWrapper>
-        <ConfirmButton>sign up</ConfirmButton>
+        <InputWrapper>
+          <Label>
+            <Input name="confirmPassword" type="password" placeholder="Confirm password" required />
+            <SpanIcon></SpanIcon>
+          </Label>
+          <ErrorText>there would be error</ErrorText>
+        </InputWrapper>
+        <ConfirmButton type="submit">sign up</ConfirmButton>
       </StyledForm>
     </AuthContainer>
   );
