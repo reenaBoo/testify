@@ -42,12 +42,13 @@ export const FormTitle = styled.h2`
 export const InputWrapper = styled.div`
   margin-bottom: 10px;
   width: 100%;
+
   &:last-of-type {
     margin: 0;
   }
 `;
 
-export const Label = styled.label`
+export const Label = styled.label<{ isError: boolean }>`
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
@@ -57,7 +58,7 @@ export const Label = styled.label`
   border-radius: 50px;
   height: 40px;
   padding: 0 20px;
-  color: ${p => p.theme.rowGrey};
+  color: ${(p) => p.theme.rowGrey};
 `;
 
 export const Input = styled.input`
@@ -67,31 +68,28 @@ export const Input = styled.input`
   background: none;
   margin-left: 10px;
   padding: 10px;
-  color: ${p => p.theme.primaryBlack};
-`
+  color: ${(p) => p.theme.primaryBlack};
+`;
 
-export const SpanIcon = styled.span`
+export const SpanIcon = styled.span``;
 
-`
-
-export const ErrorText = styled.div`
+export const ErrorText = styled.div<{ isError: boolean }>`
   font-size: 12px;
   margin-top: 5px;
   margin-left: 16px;
   transition: 0.3s;
   transform: translateY(-20px);
-  opacity: 0;
-  color: #FF5555;
-  &:before {
-    content: "* ";
-  }
-  /* if error
-   transform: translateY(0);
-    opacity: 1;
-    transition: 0.3s;
-   
-   */
-`
+  visibility: hidden;
+  color: ${(p) => p.theme.primaryRed};
+
+  ${(p) =>
+    p.isError &&
+    `
+    transform: translate(0);
+    visibility: visible;
+    
+  `}
+`;
 
 export const ConfirmButton = styled.button`
   margin-top: 30px;
@@ -104,10 +102,11 @@ export const ConfirmButton = styled.button`
   letter-spacing: 1px;
   text-transform: capitalize;
   border-radius: 50px;
-  background-color: ${p => p.theme.primaryBlue};
+  background-color: ${(p) => p.theme.primaryBlue};
   cursor: pointer;
   transition: all 0.3s ease;
+
   &:hover {
-    background-color: ${p => p.theme.secondaryBlue};
+    background-color: ${(p) => p.theme.secondaryBlue};
   }
-`
+`;
