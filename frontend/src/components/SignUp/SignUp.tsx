@@ -6,45 +6,72 @@ import {
   InputWrapper,
   Label,
   Input,
-  SpanIcon,
+  Icon,
   ErrorText,
   ConfirmButton,
 } from './SignUp.style';
 import useForm from '../../hooks/useForm';
+import { mainApi } from '../../utils/MainApi';
+import lockIcon from '../../assets/images/lock-icon.svg';
 
-function SignUp() {
-
+function SignUp({ onSubmit }: any) {
   const formLogin = () => {
+    mainApi
+      .register(values)
+      .then(() => {
+        onSubmit(values);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    console.log('Callback function when form is submitted!');
+    console.log('Form Values ', values);
+  };
 
-    console.log("Callback function when form is submitted!");
-    console.log("Form Values ", values);
-  }
-
-  const {handleChange, values, errors, isError, handleSubmit } = useForm(formLogin);
+  const { handleChange, values, errors, isError, handleSubmit } = useForm(formLogin);
 
   return (
     <AuthContainer>
-      <StyledForm onSubmit={handleSubmit}>
+      <StyledForm onSubmit={handleSubmit} noValidate>
         <FormTitle>Sign up</FormTitle>
         <InputWrapper>
-          <Label isError={isError}>
-            <Input name="name" type="text" placeholder="Enter your name" onChange={handleChange} min="5" required />
-            <SpanIcon></SpanIcon>
+          <Label>
+            <Input
+              name="name"
+              type="text"
+              placeholder="Enter your name"
+              onChange={handleChange}
+              min="5"
+              required
+            />
+            <Icon />
           </Label>
-              <ErrorText isError={isError}>{errors.name}</ErrorText>
+          <ErrorText isError={isError}>{errors.name}</ErrorText>
         </InputWrapper>
         <InputWrapper>
-          <Label isError={isError}>
-            <Input name="email" type="email" placeholder="Enter your email" onChange={handleChange} required />
-            <SpanIcon></SpanIcon>
+          <Label>
+            <Input
+              name="email"
+              type="email"
+              placeholder="Enter your email"
+              onChange={handleChange}
+              required
+            />
+            <Icon />
           </Label>
-
           <ErrorText isError={isError}>{errors.email}</ErrorText>
         </InputWrapper>
         <InputWrapper>
-          <Label isError={isError}>
-            <Input name="password" type="password" placeholder="Create password" onChange={handleChange} min="8" required />
-            <SpanIcon></SpanIcon>
+          <Label>
+            <Input
+              name="password"
+              type="password"
+              placeholder="Create password"
+              onChange={handleChange}
+              min="8"
+              required
+            />
+            <Icon src={lockIcon} />
           </Label>
           <ErrorText isError={isError}>{errors.password}</ErrorText>
         </InputWrapper>

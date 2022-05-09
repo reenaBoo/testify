@@ -4,8 +4,24 @@ import { Container } from '../Containers/Containers.styles';
 import { links } from '../../utils/contants';
 import logo from '../../assets/images/logo.svg';
 import logoutIcon from '../../assets/images/logout-icon.svg';
+import { mainApi } from '../../utils/MainApi';
+import { useNavigate } from 'react-router-dom';
 
-function SideBar() {
+function SideBar({ setIsLoggedIn }: any) {
+  const navigate = useNavigate();
+
+  function handleSignOut() {
+    mainApi
+      .signOut()
+      .then(() => {
+        setIsLoggedIn(false);
+        navigate('/');
+      })
+      .catch((err) => {
+        console.log('Ошибка ' + err);
+      });
+  }
+
   return (
     <Container>
       <StyledAside pathProps>
@@ -18,7 +34,7 @@ function SideBar() {
             </StyledLink>
           ))}
         </Container>
-        <LogOutButton>
+        <LogOutButton type="button" onClick={handleSignOut}>
           <LinkIcon icon={logoutIcon} />
           Log Out
         </LogOutButton>

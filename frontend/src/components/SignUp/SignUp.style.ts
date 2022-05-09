@@ -48,7 +48,7 @@ export const InputWrapper = styled.div`
   }
 `;
 
-export const Label = styled.label<{ isError: boolean }>`
+export const Label = styled.label`
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
@@ -71,7 +71,10 @@ export const Input = styled.input`
   color: ${(p) => p.theme.primaryBlack};
 `;
 
-export const SpanIcon = styled.span``;
+export const Icon = styled.img`
+  width: 17px;
+  border: none;
+`;
 
 export const ErrorText = styled.div<{ isError: boolean }>`
   font-size: 12px;

@@ -76,27 +76,27 @@ export const Input = styled.input`
   }
 `;
 
-export const SpanIcon = styled.span``;
+export const Icon = styled.img`
+  width: 17px;
+  border: none;
+`;
 
-export const ErrorText = styled.div`
+export const ErrorText = styled.div<{ isError: boolean }>`
   font-size: 12px;
   margin-top: 5px;
   margin-left: 16px;
   transition: 0.3s;
   transform: translateY(-20px);
-  opacity: 0;
-  color: #ff5555;
+  visibility: hidden;
+  color: ${(p) => p.theme.primaryRed};
 
-  &:before {
-    content: '* ';
-  }
-
-  /* if error
-   transform: translateY(0);
-    opacity: 1;
-    transition: 0.3s;
-   
-   */
+  ${(p) =>
+    p.isError &&
+    `
+    transform: translate(0);
+    visibility: visible;
+    
+  `}
 `;
 
 export const ConfirmButton = styled.button`

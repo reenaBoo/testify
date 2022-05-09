@@ -6,7 +6,7 @@ const useForm = (callback: any) => {
   //Form values
   const [values, setValues] = useState({});
   //Errors
-  const [errors, setErrors] = useState<IUseForm>({ name: '', email: '', password: '' });
+  const [errors, setErrors] = useState<IUseForm>({});
   const [isError, setIsError] = useState(false);
 
   const validate = useCallback(
@@ -17,7 +17,6 @@ const useForm = (callback: any) => {
         case 'name':
           if (value.length <= 4) {
             // we will set the error state
-
             setErrors({
               ...errors,
               name: '* Username atleast have 5 letters',
@@ -35,7 +34,7 @@ const useForm = (callback: any) => {
         case 'email':
           if (
             !new RegExp(
-              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
             ).test(value)
           ) {
             setErrors({
@@ -55,7 +54,7 @@ const useForm = (callback: any) => {
             setErrors({
               ...errors,
               password:
-                '* Password should contains atleast 8 charaters and containing uppercase,lowercase and numbers',
+                '* Password should contains atleast 8 charaters and containing uppercase, lowercase and numbers',
             });
             setIsError(true);
           } else {
@@ -69,7 +68,7 @@ const useForm = (callback: any) => {
           break;
       }
     }, 400),
-    [values],
+    [values, errors],
   );
 
   //A method to handle form inputs
